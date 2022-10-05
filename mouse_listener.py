@@ -45,11 +45,11 @@ class RecordMouseEvents:
         if pressed:
             self.button_is_pressed = True
 
-    def on_move(self, *args: tuple) -> dict:
+    def on_move(self, *args) -> dict:
         """ Is called when mouse is moved
 
         Args:
-            *args (tuple): with mouse coordinates
+            *args (): with mouse coordinates
 
         Returns (dict): with event type, coordinates and time
 
@@ -62,11 +62,11 @@ class RecordMouseEvents:
             'time': self.time(),
         }
 
-    def on_click(self, *args: tuple) -> dict:
+    def on_click(self, *args) -> dict:
         """ Is called when button mouse is clicked
 
         Args:
-            *args (tuple): with name button and status button
+            *args (): with name button and status button
 
         Returns (dict): with event type, coordinates, button, status and time
 
@@ -82,7 +82,7 @@ class RecordMouseEvents:
             'time': self.time(),
         }
 
-    def on_scroll(self, *args: tuple) -> dict:
+    def on_scroll(self, *args: int) -> dict:
         """ Is called when mouse scroll is moved
 
         Args:
