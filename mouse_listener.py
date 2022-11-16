@@ -9,7 +9,7 @@ class RecordMouseEvents:
 
     Methods:
         time(): Calculate time from start record to event
-        exit(pressed): Calculate time from start record to event
+        exit(pressed): Check if two buttons are pressed and stop record
         on_move(*args): Is called when mouse is moved
         on_click(*args): Is called when mouse button is clicked
         on_scroll(args): Is called when mouse scroll is moved
