@@ -1,3 +1,4 @@
+"""Test collection for mouse_listener.py """
 from datetime import datetime
 
 from freezegun import freeze_time
@@ -8,6 +9,7 @@ from mouse_listener import RecordMouseEvents
 
 @freeze_time('2012-01-01 00:00:00')
 def test_create_object():
+    """Test that the object was created correctly"""
     record_object = RecordMouseEvents()
 
     assert record_object.button_is_pressed is False
@@ -18,6 +20,7 @@ def test_create_object():
 
 @freeze_time('2020-12-31 15:12:11')
 def test_calculate_time():
+    """Test calculate time"""
     record_object = RecordMouseEvents()
     record_object.start_time = datetime(2020, 12, 30, 14, 11, 10)
 
@@ -28,6 +31,7 @@ def test_calculate_time():
 
 
 def test_check_exit_method_one_button_is_pressed(mocker):
+    """Test listener is still record when one button is pressed"""
     record_object = RecordMouseEvents()
     record_object.button_is_pressed = False
     listener_mocker = mocker.patch.object(Listener, 'stop')
@@ -39,6 +43,7 @@ def test_check_exit_method_one_button_is_pressed(mocker):
 
 
 def test_check_exit_method_one_button_is_released(mocker):
+    """Test listener is still record when one button is released"""
     record_object = RecordMouseEvents()
     record_object.button_is_pressed = True
     listener_mocker = mocker.patch.object(Listener, 'stop')
@@ -50,6 +55,7 @@ def test_check_exit_method_one_button_is_released(mocker):
 
 
 def test_check_exit_method_second_button_is_pressed(mocker):
+    """Test listener stop record when second button is pressed"""
     record_object = RecordMouseEvents()
     record_object.button_is_pressed = True
     record_object.listener = Listener()
@@ -61,8 +67,8 @@ def test_check_exit_method_second_button_is_pressed(mocker):
     assert listener_mocker.called_once()
 
 
-@freeze_time('2020-12-31 15:12:11')
 def test_result_mouse_move(mocker):
+    """Test output mouse move event """
     record_object = RecordMouseEvents()
     mocker.patch.object(RecordMouseEvents, 'time', return_value=1.1)
 
@@ -76,6 +82,7 @@ def test_result_mouse_move(mocker):
 
 
 def test_result_mouse_click(mocker):
+    """Test output mouse click event"""
     record_object = RecordMouseEvents()
     mocker.patch.object(RecordMouseEvents, 'exit')
     mocker.patch.object(RecordMouseEvents, 'time', return_value=2.0003)
@@ -93,6 +100,7 @@ def test_result_mouse_click(mocker):
 
 
 def test_result_mouse_scroll(mocker):
+    """Test output mouse scroll event"""
     record_object = RecordMouseEvents()
     mocker.patch.object(RecordMouseEvents, 'time', return_value=0.001)
 
@@ -105,17 +113,30 @@ def test_result_mouse_scroll(mocker):
     assert result['time'] == 0.001
 
 
-# def test_record_method_mouse_move(mocker):
-#     data = {
-#             'eventType': 'mouse_move',
-#             'coordinate': {'x': 12, 'y': 0},
-#             'time': 1.2345,
-#         }
-#
-#     record_object = RecordMouseEvents()
-#     mocker.patch.object(RecordMouseEvents, 'on_move', return_value=data)
-#
-#     record_object.record()
-#
-#     assert RecordMouseEvents.on_move.assert_called()
+# Test for record method...
 
+# @freeze_time('2020-12-31 15:12:11')
+# def test_correctly_read_events(mocker):
+#     on_click_value = {
+#             'eventType': 'mouse_click',
+#             'coordinate': {'x': 90, 'y': 100},
+#             'button': 'Button.right',
+#             'pressed': 'true',
+#             'time': 10.1,
+#         }
+#     on_scroll_value = {
+#         'eventType': 'mouse_scroll',
+#         'coordinate': {'x': 11, 'y': 90},
+#         'scroll_vector': {'dx': 0, 'dy': -1},
+#         'time': 2.2,
+#     }
+#     record_object = RecordMouseEvents()
+#     mocker.patch.object(Listener, 'join')
+#     mocker.patch.object(RecordMouseEvents, 'on_click', return_value=on_click_value)
+#     mocker.patch.object(RecordMouseEvents, 'on_scroll', return_value=on_scroll_value)
+#     print('xx'*200)
+#     record_object.record()
+#     print('2'*200)
+#     record_object.on_click()
+#
+#     assert record_object.events == [on_click_value]
