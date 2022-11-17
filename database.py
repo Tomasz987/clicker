@@ -1,5 +1,5 @@
 """Module to save and load data from json file"""
-from json import dump, load
+import json
 
 
 class Database:
@@ -31,7 +31,7 @@ class Database:
             data (list): with data to save
 
         """
-        dump(data, self.file)
+        json.dump(data, self.file)
 
     def load(self):
         """ Load data from json file
@@ -39,4 +39,4 @@ class Database:
         Returns: data from json file
 
         """
-        return load(self.file)
+        return json.load(self.file)
