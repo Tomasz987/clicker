@@ -68,7 +68,7 @@ def test_check_exit_method_second_button_is_pressed(mocker):
 
 
 def test_result_mouse_move(mocker):
-    """Test output mouse move event """
+    """Test output mouse move event"""
     record_object = RecordMouseEvents()
     mocker.patch.object(RecordMouseEvents, 'time', return_value=1.1)
 
