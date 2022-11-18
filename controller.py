@@ -19,8 +19,13 @@ class PlayEvents:
         keyboard_key_release(key): Imitates release passed key on keyboard
 
     """
-    def __init__(self, events):
-        """ PlayEvents class constructor"""
+    def __init__(self, events: dict):
+        """ PlayEvents class constructor
+
+        Args:
+            events (dict): with saved events
+
+        """
         self.events = events
         self.mouse_controller = MouseController()
         self.keyboard_controller = KeyboardController()
