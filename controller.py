@@ -2,8 +2,8 @@
 from time import sleep
 
 from pynput.mouse import Button
-from pynput.mouse import Controller as mouse_controller
-from pynput.keyboard import Controller as keyboard_controller
+from pynput.mouse import Controller as MouseController
+from pynput.keyboard import Controller as KeyboardController
 from pynput.keyboard import Key
 
 
@@ -22,8 +22,8 @@ class PlayEvents:
     def __init__(self, events):
         """ PlayEvents class constructor"""
         self.events = events
-        self.mouse_controller = mouse_controller()
-        self.keyboard_controller = keyboard_controller()
+        self.mouse_controller = MouseController()
+        self.keyboard_controller = KeyboardController()
 
     def play(self):
         """ Called to a method that responds to a specific event"""
