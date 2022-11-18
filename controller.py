@@ -19,11 +19,11 @@ class PlayEvents:
         keyboard_key_release(key): Imitates release passed key on keyboard
 
     """
-    def __init__(self, events: dict):
+    def __init__(self, events: list):
         """ PlayEvents class constructor
 
         Args:
-            events (dict): with saved events
+            events (list): with dict saved events
 
         """
         self.events = events
