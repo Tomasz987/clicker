@@ -1,6 +1,7 @@
 """Module for play recorded events"""
-from time import sleep
+import time
 
+import pynput
 from pynput.mouse import Button
 from pynput.mouse import Controller as MouseController
 from pynput.keyboard import Controller as KeyboardController
@@ -34,14 +35,14 @@ class PlayEvents:
         """ Called to a method that responds to a specific event"""
         previous_time = 0
         for index, event in enumerate(self.events):
-            print(event)
             if index != 0:
                 previous_time = self.events[index - 1]['time']
-            time = event['time'] - previous_time
+            wait = event['time'] - previous_time
+            if wait > 1:
+                time.sleep(wait/100)
+            elif wait < 1:
+                time.sleep(wait/1000)
 
-            if time > 1:
-                sleep(time/100)
-            sleep(time/1000)
             if event['eventType'] == 'mouse_move':
                 self.mouse_move(event['coordinate'])
 
@@ -57,14 +58,14 @@ class PlayEvents:
             elif event['eventType'] == 'keyboard_key_released':
                 self.keyboard_key_release(event['key'])
 
-    def mouse_move(self, coordinates: tuple):
+    def mouse_move(self, coordinates: dict):
         """ Move the mouse to the given coordinates
 
         Args:
-            coordinates (tuple): Coordinates to move the mouse
+            coordinates (dict): Coordinates to move the mouse
 
         """
-        current_x, current_y = self.mouse_controller.position
+        current_x, current_y = self.mouse_controller.position()
         x, y = coordinates['x'], coordinates['y']
         to_move_x = x - current_x
         to_move_y = y - current_y
