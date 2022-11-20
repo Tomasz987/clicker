@@ -10,9 +10,9 @@ from keyboard_listener import RecordKeyboardEvents
 def record_events():
     """Start record events"""
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        future = executor.submit(RecordMouseEvents().record)
-        future1 = executor.submit(RecordKeyboardEvents().record)
-        events = future.result() + future1.result()
+        mouse_future = executor.submit(RecordMouseEvents().record)
+        keyboard_future = executor.submit(RecordKeyboardEvents().record)
+        events = mouse_future.result() + keyboard_future.result()
         events = sorted(events, key=lambda k: k['time'])
 
     with Database('file.json', 'w') as database:
