@@ -4,7 +4,7 @@ from datetime import datetime
 from freezegun import freeze_time
 from pynput.mouse import Listener, Button
 
-from mouse_listener import RecordMouseEvents
+from tools.mouse_listener import RecordMouseEvents
 
 
 @freeze_time('2012-01-01 00:00:00')

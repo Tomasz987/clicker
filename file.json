@@ -1,0 +1,278 @@
+[
+  {
+    "eventType": "mouse_click",
+    "coordinate": {
+      "x": 395,
+      "y": 706
+    },
+    "button": "Button.left",
+    "pressed": false,
+    "time": 0.241995
+  },
+  {
+    "eventType": "mouse_click",
+    "coordinate": {
+      "x": 395,
+      "y": 706
+    },
+    "button": "Button.right",
+    "pressed": false,
+    "time": 0.257995
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 394,
+      "y": 706
+    },
+    "time": 0.634093
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 393,
+      "y": 706
+    },
+    "time": 0.649791
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 392,
+      "y": 706
+    },
+    "time": 0.666161
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 390,
+      "y": 706
+    },
+    "time": 0.669998
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 389,
+      "y": 706
+    },
+    "time": 0.682163
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 387,
+      "y": 706
+    },
+    "time": 0.686132
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 385,
+      "y": 706
+    },
+    "time": 0.69789
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 383,
+      "y": 706
+    },
+    "time": 0.702112
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 381,
+      "y": 706
+    },
+    "time": 0.714004
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 380,
+      "y": 706
+    },
+    "time": 0.718136
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 378,
+      "y": 706
+    },
+    "time": 0.729988
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 377,
+      "y": 706
+    },
+    "time": 0.734048
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 376,
+      "y": 706
+    },
+    "time": 0.746015
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 375,
+      "y": 706
+    },
+    "time": 0.750017
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 375,
+      "y": 706
+    },
+    "time": 0.761981
+  },
+  {
+    "eventType": "keyboard_key_pressed",
+    "key": "'q'",
+    "pressed": true,
+    "time": 1.052385
+  },
+  {
+    "eventType": "keyboard_key_pressed",
+    "key": "Key.esc",
+    "pressed": true,
+    "time": 1.140892
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 372,
+      "y": 706
+    },
+    "time": 2.742488
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 371,
+      "y": 706
+    },
+    "time": 2.746036
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 369,
+      "y": 706
+    },
+    "time": 2.757932
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 367,
+      "y": 706
+    },
+    "time": 2.76194
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 365,
+      "y": 706
+    },
+    "time": 2.773974
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 362,
+      "y": 706
+    },
+    "time": 2.777882
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 360,
+      "y": 706
+    },
+    "time": 2.790086
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 359,
+      "y": 706
+    },
+    "time": 2.793567
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "time": 2.805995
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "time": 2.886238
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "time": 2.902192
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "time": 3.454108
+  },
+  {
+    "eventType": "mouse_move",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "time": 3.47008
+  },
+  {
+    "eventType": "mouse_click",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "button": "Button.left",
+    "pressed": true,
+    "time": 4.007024
+  },
+  {
+    "eventType": "mouse_click",
+    "coordinate": {
+      "x": 358,
+      "y": 706
+    },
+    "button": "Button.right",
+    "pressed": true,
+    "time": 4.102431
+  }
+]

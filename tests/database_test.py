@@ -4,7 +4,7 @@ import json
 
 from unittest.mock import MagicMock
 
-from database import Database
+from tools.database import Database
 
 
 def test_create_object():

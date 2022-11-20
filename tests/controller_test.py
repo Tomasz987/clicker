@@ -6,8 +6,8 @@ from pynput.mouse import Button
 from pynput.mouse import Controller as MouseController
 from pynput.keyboard import Controller as KeyboardController
 
-from controller import PlayEvents
-from keys_collection import Key
+from tools.controller import PlayEvents
+from tools.keys_collection import Key
 
 
 FAKE_EVENTS = [
