@@ -1,10 +1,10 @@
 """App to record and play keyboard and mouse events"""
 import concurrent.futures
 
-from controller import PlayEvents
-from database import Database
-from mouse_listener import RecordMouseEvents
-from keyboard_listener import RecordKeyboardEvents
+from tools.controller import PlayEvents
+from tools.database import Database
+from tools.mouse_listener import RecordMouseEvents
+from tools.keyboard_listener import RecordKeyboardEvents
 
 
 def record_events():
