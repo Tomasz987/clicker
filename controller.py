@@ -65,7 +65,7 @@ class PlayEvents:
             coordinates (dict): Coordinates to move the mouse
 
         """
-        current_x, current_y = self.mouse_controller.position()
+        current_x, current_y = self.mouse_controller.position
         x, y = coordinates['x'], coordinates['y']
         to_move_x = x - current_x
         to_move_y = y - current_y
@@ -81,11 +81,11 @@ class PlayEvents:
         """
         self.mouse_controller.click(eval(button))
 
-    def mouse_scroll(self, scroll_vector: tuple):
+    def mouse_scroll(self, scroll_vector: dict):
         """ Move mouse scroll to the passed vector
 
         Args:
-            scroll_vector (tuple): with scroll vector
+            scroll_vector (dict): with scroll vector
 
         """
         dx, dy = scroll_vector['dx'], scroll_vector['dy']
