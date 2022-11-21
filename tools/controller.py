@@ -1,11 +1,8 @@
 """Module for play recorded events"""
 import time
 
-import pynput
-from pynput.mouse import Button
 from pynput.mouse import Controller as MouseController
 from pynput.keyboard import Controller as KeyboardController
-from pynput.keyboard import Key
 
 
 class PlayEvents:
