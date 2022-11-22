@@ -42,7 +42,7 @@ class PlayEvents:
     def time_to_wait(self, time_since_start):
         self.previous_time = time_since_start
         time_to_wait = time_since_start - self.previous_time
-        return time_to_wait + 0.3
+        return time_to_wait + 0.1
 
     def play(self):
         """Called to a method that responds to a specific event."""
@@ -66,15 +66,18 @@ class PlayEvents:
 
         self.mouse_controller.move(to_move_x, to_move_y)
 
-    def mouse_click(self, button: str):
+    def mouse_click(self, button: str, pressed: bool):
         """Click the passed button on the mouse.
 
         Args:
             button (str): with name button to click.
+            pressed (bool): button is pressed.
 
         """
-        print(button)
-        self.mouse_controller.click(eval(button))
+        if pressed:
+            self.mouse_controller.press(eval(button))
+        else:
+            self.mouse_controller.release(eval(button))
 
     def mouse_scroll(self, vector_dx: int, vector_dy: int):
         """Move mouse scroll to the passed vector.

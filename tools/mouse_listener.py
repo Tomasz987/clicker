@@ -64,7 +64,8 @@ class RecordMouseEvents:
 
         return {
             'mouse_click': (
-                {'button': str(button)},
+                {'button': str(button),
+                 'pressed': pressed},
                 {'time': self.time()},
             ),
         }
