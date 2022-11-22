@@ -1,6 +1,5 @@
 """Module to record mouse events"""
 from datetime import datetime
-from typing import List, Dict, Any
 
 from pynput.mouse import Listener
 
@@ -30,7 +29,7 @@ class RecordMouseEvents:
         """
         return (datetime.now() - self.start_time).total_seconds()
 
-    def on_move(self, *args) -> dict[str, dict[str, Any] | float]:
+    def on_move(self, *args) -> dict:
         """ Is called when mouse is moved
 
         Args:
