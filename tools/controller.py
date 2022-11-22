@@ -1,8 +1,10 @@
 """Module for play recorded events"""
 import time
 
-from pynput.mouse import Controller as MouseController
 from pynput.keyboard import Controller as KeyboardController
+from pynput.keyboard import Key
+from pynput.mouse import Button
+from pynput.mouse import Controller as MouseController
 
 
 class PlayEvents:
@@ -40,28 +42,27 @@ class PlayEvents:
     def time_to_wait(self, time_since_start):
         self.previous_time = time_since_start
         time_to_wait = time_since_start - self.previous_time
-        if time_to_wait > 1:
-            return time_to_wait / 100
-        return time_to_wait / 1000
+        return time_to_wait + 0.3
 
     def play(self):
         """ Called to a method that responds to a specific event"""
         previous_time = 0
         for event in self.events:
-            for event_name, options in event:
-                self.options[event_name](**options)
+            for event_name, options in event.items():
+                time.sleep(self.time_to_wait(options[1]['time']))
+                self.options[event_name](**options[0])
 
-    def mouse_move(self, coordinates: dict):
+    def mouse_move(self, coordinate_x: int, coordinate_y: int):
         """ Move the mouse to the given coordinates
 
         Args:
-            coordinates (dict): Coordinates to move the mouse
+            coordinate_x (int): horizontal coordinate to move the mouse
+            coordinate_y (int): vertical coordinate to move the mouse
 
         """
         current_x, current_y = self.mouse_controller.position
-        x, y = coordinates['x'], coordinates['y']
-        to_move_x = x - current_x
-        to_move_y = y - current_y
+        to_move_x = coordinate_x - current_x
+        to_move_y = coordinate_y - current_y
 
         self.mouse_controller.move(to_move_x, to_move_y)
 
@@ -72,17 +73,19 @@ class PlayEvents:
             button (str): with name button to click
 
         """
+        print(button)
         self.mouse_controller.click(eval(button))
 
-    def mouse_scroll(self, scroll_vector: dict):
+    def mouse_scroll(self, vector_dx: int, vector_dy: int):
         """ Move mouse scroll to the passed vector
 
         Args:
-            scroll_vector (dict): with scroll vector
+            vector_dx (int): horizontal scroll vector
+            vector_dy (int): vertical scroll vector
 
         """
-        dx, dy = scroll_vector['dx'], scroll_vector['dy']
-        self.mouse_controller.scroll(dx, dy)
+
+        self.mouse_controller.scroll(vector_dx, vector_dy)
 
     def keyboard_key_press(self, key: str):
         """ Imitates press passed key on keyboard

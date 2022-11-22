@@ -41,11 +41,13 @@ class RecordMouseEvents:
         x, y = args
 
         return {
-            'mouse_move': {
-                'coordinate_x': x,
-                'coordinate_y': y,
-            },
-            'wait': {'seconds': self.time()}
+            'mouse_move': (
+                {
+                    'coordinate_x': x,
+                    'coordinate_y': y,
+                },
+                {'time': self.time()},
+            ),
         }
 
     def on_click(self, *args) -> dict:
@@ -60,8 +62,10 @@ class RecordMouseEvents:
         x, y, button, pressed = args
 
         return {
-            'mouse_click': {str(button)},
-            'wait': {'seconds': self.time()},
+            'mouse_click': (
+                {'button': str(button)},
+                {'time': self.time()},
+            ),
         }
 
     def on_scroll(self, *args: int) -> dict:
@@ -76,11 +80,13 @@ class RecordMouseEvents:
         x, y, dx, dy = args
 
         return {
-            'mouse_scroll': {
-                'vector_dx': dx,
-                'vector_dy': dy
-            },
-            'wait': {'seconds': self.time()}
+            'mouse_scroll': (
+                {
+                    'vector_dx': dx,
+                    'vector_dy': dy
+                },
+                {'time': self.time()},
+            ),
         }
 
     def record(self) -> list:

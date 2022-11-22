@@ -3,6 +3,8 @@ from enum import Enum
 from datetime import datetime
 from pynput.keyboard import Listener
 
+from tools.mouse_listener import RecordMouseEvents
+
 
 class RecordKeyboardEvents:
     """ Class to record keyboard events
@@ -46,11 +48,12 @@ class RecordKeyboardEvents:
         self.exit()
 
         return {
-            'keyboard_key_pressed': {
-                'key': str(key),
-                'pressed': True,
-            },
-            'wait': {'seconds': self.time()}
+            'keyboard_key_press': (
+                {
+                    'key': str(key),
+                },
+                {'time': self.time()},
+            ),
         }
 
     def on_release(self, key: Enum) -> dict:
@@ -65,11 +68,12 @@ class RecordKeyboardEvents:
         del self.pressed[str(key)]
 
         return {
-            'keyboard_key_released': {
-                'key': str(key),
-                'pressed': False,
-            },
-            'wait': {'seconds': self.time()}
+            'keyboard_key_release': (
+                {
+                    'key': str(key),
+                },
+                {'time': self.time()},
+            ),
         }
 
     def record(self) -> list:
