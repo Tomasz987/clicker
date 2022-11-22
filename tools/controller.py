@@ -27,33 +27,29 @@ class PlayEvents:
         self.events = events
         self.mouse_controller = MouseController()
         self.keyboard_controller = KeyboardController()
+        self.previous_time = 0
+        self.options = {
+            'wait': self.time_to_wait,
+            'mouse_move': self.mouse_move,
+            'mouse_click': self.mouse_click,
+            'mouse_scroll': self.mouse_scroll,
+            'keyboard_key_press': self.keyboard_key_press,
+            'keyboard_key_release': self.keyboard_key_release,
+        }
+
+    def time_to_wait(self, time_since_start):
+        self.previous_time = time_since_start
+        time_to_wait = time_since_start - self.previous_time
+        if time_to_wait > 1:
+            return time_to_wait / 100
+        return time_to_wait / 1000
 
     def play(self):
         """ Called to a method that responds to a specific event"""
         previous_time = 0
-        for index, event in enumerate(self.events):
-            if index != 0:
-                previous_time = self.events[index - 1]['time']
-            wait = event['time'] - previous_time
-            if wait > 1:
-                time.sleep(wait/100)
-            elif wait < 1:
-                time.sleep(wait/1000)
-
-            if event['eventType'] == 'mouse_move':
-                self.mouse_move(event['coordinate'])
-
-            elif event['eventType'] == 'mouse_click':
-                self.mouse_click(event['button'])
-
-            elif event['eventType'] == 'mouse_scroll':
-                self.mouse_scroll(event['scroll_vector'])
-
-            elif event['eventType'] == 'keyboard_key_pressed':
-                self.keyboard_key_press(event['key'])
-
-            elif event['eventType'] == 'keyboard_key_released':
-                self.keyboard_key_release(event['key'])
+        for event in self.events:
+            for event_name, options in event:
+                self.options[event_name](**options)
 
     def mouse_move(self, coordinates: dict):
         """ Move the mouse to the given coordinates

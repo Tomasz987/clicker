@@ -1,5 +1,6 @@
 """Module to record mouse events"""
 from datetime import datetime
+from typing import List, Dict, Any
 
 from pynput.mouse import Listener
 
@@ -9,7 +10,6 @@ class RecordMouseEvents:
 
     Methods:
         time(): Calculate time from start record to event
-        exit(pressed): Check if two buttons are pressed and stop record
         on_move(*args): Is called when mouse is moved
         on_click(*args): Is called when mouse button is clicked
         on_scroll(args): Is called when mouse scroll is moved
@@ -30,22 +30,7 @@ class RecordMouseEvents:
         """
         return (datetime.now() - self.start_time).total_seconds()
 
-    def exit(self, pressed: bool):
-        """ If two buttons are pressed stop record
-
-        Args:
-            pressed (bool): button pressed status
-
-        """
-        if self.button_is_pressed:
-            if pressed:
-                self.listener.stop()
-            if not pressed:
-                self.button_is_pressed = False
-        if pressed:
-            self.button_is_pressed = True
-
-    def on_move(self, *args) -> dict:
+    def on_move(self, *args) -> dict[str, dict[str, Any] | float]:
         """ Is called when mouse is moved
 
         Args:
@@ -57,9 +42,11 @@ class RecordMouseEvents:
         x, y = args
 
         return {
-            'eventType': 'mouse_move',
-            'coordinate': {'x': x, 'y': y},
-            'time': self.time(),
+            'mouse_move': {
+                'coordinate_x': x,
+                'coordinate_y': y,
+            },
+            'wait': {'seconds': self.time()}
         }
 
     def on_click(self, *args) -> dict:
@@ -72,32 +59,29 @@ class RecordMouseEvents:
 
         """
         x, y, button, pressed = args
-        self.exit(pressed)
 
         return {
-            'eventType': 'mouse_click',
-            'coordinate': {'x': x, 'y': y},
-            'button': str(button),
-            'pressed': pressed,
-            'time': self.time(),
+            'mouse_click': {str(button)},
+            'wait': {'seconds': self.time()},
         }
 
     def on_scroll(self, *args: int) -> dict:
         """ Is called when mouse scroll is moved
 
         Args:
-            *args (tuple): with mouse coordinates and scrool vector
+            *args (tuple): with mouse coordinates and scroll vector
 
-        Returns (dict): with event type, coordinates, scrool vector and time
+        Returns (dict): with event type, coordinates, scroll vector and time
 
         """
         x, y, dx, dy = args
 
         return {
-            'eventType': 'mouse_scroll',
-            'coordinate': {'x': x, 'y': y},
-            'scroll_vector': {'dx': dx, 'dy': dy},
-            'time': self.time(),
+            'mouse_scroll': {
+                'vector_dx': dx,
+                'vector_dy': dy
+            },
+            'wait': {'seconds': self.time()}
         }
 
     def record(self) -> list:

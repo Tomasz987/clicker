@@ -46,10 +46,11 @@ class RecordKeyboardEvents:
         self.exit()
 
         return {
-            'eventType': 'keyboard_key_pressed',
-            'key': str(key),
-            'pressed': True,
-            'time': self.time(),
+            'keyboard_key_pressed': {
+                'key': str(key),
+                'pressed': True,
+            },
+            'wait': {'seconds': self.time()}
         }
 
     def on_release(self, key: Enum) -> dict:
@@ -64,10 +65,11 @@ class RecordKeyboardEvents:
         del self.pressed[str(key)]
 
         return {
-            'eventType': 'keyboard_key_released',
-            'key': str(key),
-            'pressed': False,
-            'time': self.time(),
+            'keyboard_key_released': {
+                'key': str(key),
+                'pressed': False,
+            },
+            'wait': {'seconds': self.time()}
         }
 
     def record(self) -> list:
