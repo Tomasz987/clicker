@@ -1,4 +1,4 @@
-"""App to record and play keyboard and mouse events"""
+"""App to record and play keyboard and mouse events."""
 import concurrent.futures
 import time
 
@@ -27,7 +27,7 @@ class Clicker:
         self.mouse_listener.listener.stop()
 
     def record_events(self):
-        """Start record events"""
+        """Start record events."""
         with concurrent.futures.ThreadPoolExecutor() as executor:
             self.mouse_future = executor.submit(self.mouse_listener.record)
             self.keyboard_future = executor.submit(self.keyboard_listener.record)

@@ -1,41 +1,42 @@
-"""Module to record mouse events"""
+"""Module to record mouse events."""
 from datetime import datetime
 
 from pynput.mouse import Listener
 
 
 class RecordMouseEvents:
-    """ Class to record mouse events
+    """Class to record mouse events.
 
     Methods:
-        time(): Calculate time from start record to event
-        on_move(*args): Is called when mouse is moved
-        on_click(*args): Is called when mouse button is clicked
-        on_scroll(args): Is called when mouse scroll is moved
-        record(): Start record mouse events
+        time(): Calculate time from start record to event.
+        on_move(*args): Is called when mouse is moved.
+        on_click(*args): Is called when mouse button is clicked.
+        on_scroll(args): Is called when mouse scroll is moved.
+        record(): Start record mouse events.
 
     """
     def __init__(self):
-        """ Record class constructor"""
+        """Record class constructor."""
         self.button_is_pressed = False
         self.events = []
         self.listener = None
         self.start_time = datetime.now()
 
     def time(self) -> float:
-        """
-        Returns (float): Calculate time from start record to event
+        """Calculate time from start record to event.
+
+        Returns (float): Calculate time from start record to event.
 
         """
         return (datetime.now() - self.start_time).total_seconds()
 
     def on_move(self, *args) -> dict:
-        """ Is called when mouse is moved
+        """Is called when mouse is moved.
 
         Args:
-            *args (): with mouse coordinates
+            *args (): with mouse coordinates.
 
-        Returns (dict): with event type, coordinates and time
+        Returns (dict): with event type, coordinates and time.
 
         """
         x, y = args
@@ -51,12 +52,12 @@ class RecordMouseEvents:
         }
 
     def on_click(self, *args) -> dict:
-        """ Is called when button mouse is clicked
+        """Is called when button mouse is clicked.
 
         Args:
-            *args (): with name button and status button
+            *args (): with name button and status button.
 
-        Returns (dict): with event type, coordinates, button, status and time
+        Returns (dict): with event type, coordinates, button, status and time.
 
         """
         x, y, button, pressed = args
@@ -69,12 +70,12 @@ class RecordMouseEvents:
         }
 
     def on_scroll(self, *args: int) -> dict:
-        """ Is called when mouse scroll is moved
+        """Is called when mouse scroll is moved.
 
         Args:
-            *args (tuple): with mouse coordinates and scroll vector
+            *args (tuple): with mouse coordinates and scroll vector.
 
-        Returns (dict): with event type, coordinates, scroll vector and time
+        Returns (dict): with event type, coordinates, scroll vector and time.
 
         """
         x, y, dx, dy = args
@@ -90,9 +91,9 @@ class RecordMouseEvents:
         }
 
     def record(self) -> list:
-        """Start record mouse events
+        """Start record mouse events.
 
-        Returns (list): with recorded mouse events
+        Returns (list): with recorded mouse events.
 
         """
         with Listener(

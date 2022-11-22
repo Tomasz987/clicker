@@ -1,4 +1,4 @@
-"""Tests collection for controller.py module"""
+"""Tests collection for controller.py module."""
 import time
 from unittest.mock import call
 
@@ -45,7 +45,7 @@ FAKE_EVENTS = [
 
 
 def test_create_object():
-    """ Test check if the object is created correctly """
+    """Test check if the object is created correctly."""
     controller = PlayEvents(FAKE_EVENTS)
 
     assert controller.events == FAKE_EVENTS
@@ -54,10 +54,10 @@ def test_create_object():
 
 
 def test_wait_time_between_events(mocker):
-    """ Test check if the time between events is calculated correctly
+    """Test check if the time between events is calculated correctly.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(time, 'sleep')
@@ -84,10 +84,10 @@ def test_wait_time_between_events(mocker):
 
 
 def test_once_called_to_mouse_move(mocker):
-    """ Test check if the mouse move event is called to the correct method
+    """Test check if the mouse move event is called to the correct method.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(PlayEvents, 'mouse_move')
@@ -106,10 +106,10 @@ def test_once_called_to_mouse_move(mocker):
 
 
 def test_once_called_to_mouse_click(mocker):
-    """ Test check if the mouse click event is called to the correct method
+    """Test check if the mouse click event is called to the correct method.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(PlayEvents, 'mouse_click')
@@ -131,10 +131,10 @@ def test_once_called_to_mouse_click(mocker):
 
 
 def test_once_called_to_mouse_scroll(mocker):
-    """ Test check if the mouse scroll event is called to the correct method
+    """Test check if the mouse scroll event is called to the correct method.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(PlayEvents, 'mouse_scroll')
@@ -155,10 +155,10 @@ def test_once_called_to_mouse_scroll(mocker):
 
 
 def test_once_called_to_keyboard_key_press(mocker):
-    """ Test check if the keyboard key press event is called to the correct method
+    """Test check if the keyboard key press event is called to the correct method.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(PlayEvents, 'keyboard_key_press')
@@ -179,10 +179,10 @@ def test_once_called_to_keyboard_key_press(mocker):
 
 
 def test_once_called_to_keyboard_key_release(mocker):
-    """ Test check if the keyboard key release event is called to the correct method
+    """Test check if the keyboard key release event is called to the correct method.
 
     Args:
-        mocker (pytest_mock): mock to catch called methods
+        mocker (pytest_mock): mock to catch called methods.
 
     """
     mocker.patch.object(PlayEvents, 'keyboard_key_release')
@@ -203,10 +203,10 @@ def test_once_called_to_keyboard_key_release(mocker):
 
 
 def test_mouse_move(mocker):
-    """ Test check if the mouse_move method is correctly called to the controller
+    """Test check if the mouse_move method is correctly called to the controller.
 
     Args:
-        mocker (pytes_mock): mock to catch called methods
+        mocker (pytes_mock): mock to catch called methods.
 
     """
     mocker.patch.object(
@@ -227,10 +227,10 @@ def test_mouse_move(mocker):
 
 
 def test_mouse_click(mocker):
-    """ Test check if the mouse_click method is correctly called to the controller
+    """Test check if the mouse_click method is correctly called to the controller.
 
     Args:
-        mocker (pytes_mock): mock to catch called methods
+        mocker (pytes_mock): mock to catch called methods.
 
     """
     mocker.patch.object(MouseController, 'click')
@@ -244,10 +244,10 @@ def test_mouse_click(mocker):
 
 
 def test_mouse_scroll(mocker):
-    """ Test check if the mouse_scroll method is correctly called to the controller
+    """Test check if the mouse_scroll method is correctly called to the controller.
 
     Args:
-        mocker (pytes_mock): mock to catch called methods
+        mocker (pytes_mock): mock to catch called methods.
 
     """
     mocker.patch.object(MouseController, 'scroll')
@@ -261,10 +261,10 @@ def test_mouse_scroll(mocker):
 
 
 def test_keyboard_key_press(mocker):
-    """ Test check if the keyboard_key_press method is correctly called to the controller
+    """Test check if the keyboard_key_press method is correctly called to the controller.
 
     Args:
-        mocker (pytes_mock): mock to catch called methods
+        mocker (pytes_mock): mock to catch called methods.
 
     """
     mocker.patch.object(KeyboardController, 'press')
@@ -277,10 +277,10 @@ def test_keyboard_key_press(mocker):
 
 
 def test_keyboard_key_release(mocker):
-    """ Test check if the keyboard_key_release method is correctly called to the controller
+    """Test check if the keyboard_key_release method is correctly called to the controller.
 
     Args:
-        mocker (pytes_mock): mock to catch called methods
+        mocker (pytes_mock): mock to catch called methods.
 
     """
     mocker.patch.object(KeyboardController, 'release')
