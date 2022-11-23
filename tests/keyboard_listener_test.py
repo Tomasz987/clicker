@@ -50,19 +50,22 @@ def test_stop_record_buttons_are_pressed_together(mocker):
 
     stop_listener_mocker.assert_called_once()
 
-
+@freeze_time('2020-12-31 15:12:11')
 def test_output_if_key_is_pressed():
     """Test output when key is pressed."""
     record_object = RecordKeyboardEvents()
-    excepted_recult = {
-            'eventType': 'keyboard_key_pressed',
-            'key': Keys.q.name,
-            'pressed': 'True',
-            'time': 0.0,
-    }
+    record_object.start_time = datetime(2020, 12, 31, 15, 11, 15)
+    excepted_result = {
+            'keyboard_key_press': (
+                {
+                    'key': str(Keys.q.name),
+                },
+                {'time': 56.0},
+            ),
+        }
 
     result = record_object.on_press(Keys.q.name)
-    assert result != excepted_recult
+    assert result == excepted_result
 
 
 def test_two_buttons_are_pressed():
@@ -77,15 +80,17 @@ def test_two_buttons_are_pressed():
     assert all([key in record_object.pressed for key in ('q', 'b')])
 
 
-def test_output_key_is_released():
+def test_output_if_key_is_released():
     """Test output when key is released."""
     record_object = RecordKeyboardEvents()
     record_object.pressed['b'] = True
     excepted_value = {
-            'eventType': 'keyboard_key_released',
-            'key': Keys.b.name,
-            'pressed': False,
-            'time': 0.0,
+            'keyboard_key_release': (
+                {
+                    'key': Keys.b.name,
+                },
+                {'time': 0.0},
+            ),
         }
 
     result = record_object.on_release(Keys.b.name)

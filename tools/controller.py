@@ -39,9 +39,15 @@ class PlayEvents:
             'keyboard_key_release': self.keyboard_key_release,
         }
 
-    def time_to_wait(self, time_since_start):
-        self.previous_time = time_since_start
+    def time_to_wait(self, time_since_start: float):
+        """Calculate wait time between events.
+
+        Args:
+            time_since_start (float): time since start record.
+
+        """
         time_to_wait = time_since_start - self.previous_time
+        self.previous_time = time_since_start
         return time_to_wait + 0.1
 
     def play(self):
